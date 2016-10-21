@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+	</h:head>
+	<h:body>
+		
+		<h:form id="form1">
+			<p:messages></p:messages>
+			
+			<p:fieldset legend="EDITAR FUNCIONARIO">
+				<h:inputHidden value="#{fbean.f2.id}" />
+				<p:panelGrid columns="2">
+					<h:outputText value="NOME: " />
+					<p:inputText value="#{fbean.f2.nome}" />
+					
+					<h:outputText value="SALÁRIO: " />
+					<p:inputText value="#{fbean.f2.salario}" />
+				</p:panelGrid>
+				<p:commandButton value="CADASTRAR" ajax="false" update="form1" 
+					action="#{fbean.editar}" />
+			</p:fieldset>		
+			<a href="cadastrar.jsf">Voltar</a>
+			
+		</h:form>
+		
+	</h:body>
+	
+
+</html>
