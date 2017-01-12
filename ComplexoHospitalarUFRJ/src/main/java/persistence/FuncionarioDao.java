@@ -10,13 +10,30 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
 
+// TODO: Auto-generated Javadoc
+/**
+ * DAO para manipular Funcionario na base de dados.
+ */
 public class FuncionarioDao {
 
+	/** The session. */
 	Session session;
+	
+	/** The criteria. */
 	Criteria criteria;
+	
+	/** The transaction. */
 	Transaction transaction;
+	
+	/** The query. */
 	Query query;
 	
+	/**
+	 * Cadastrar.
+	 *
+	 * @param f the f
+	 * @throws Exception the exception
+	 */
 	public void cadastrar(Funcionario f)throws Exception{
 		session = HibernateUtil.getSessionFactory().openSession();
 		transaction = session.beginTransaction();
@@ -25,6 +42,12 @@ public class FuncionarioDao {
 		session.close();
 	}
 	
+	/**
+	 * Update.
+	 *
+	 * @param f the f
+	 * @throws Exception the exception
+	 */
 	public void update(Funcionario f)throws Exception{
 		session = HibernateUtil.getSessionFactory().openSession();
 		transaction = session.beginTransaction();
@@ -33,6 +56,12 @@ public class FuncionarioDao {
 		session.close();
 	}
 	
+	/**
+	 * Delete.
+	 *
+	 * @param f the f
+	 * @throws Exception the exception
+	 */
 	public void delete(Funcionario f)throws Exception{
 		session = HibernateUtil.getSessionFactory().openSession();
 		transaction = session.beginTransaction();
@@ -41,6 +70,12 @@ public class FuncionarioDao {
 		session.close();
 	}
 	
+	/**
+	 * Listar.
+	 *
+	 * @return the list
+	 * @throws Exception the exception
+	 */
 	public List<Funcionario> listar()throws Exception{
 		session = HibernateUtil.getSessionFactory().openSession();
 		criteria = session.createCriteria(Funcionario.class);
@@ -50,6 +85,13 @@ public class FuncionarioDao {
 		return lista;
 	}
 	
+	/**
+	 * Buscar id.
+	 *
+	 * @param id the id
+	 * @return the funcionario
+	 * @throws Exception the exception
+	 */
 	public Funcionario buscarId(Integer id)throws Exception{
 		session = HibernateUtil.getSessionFactory().openSession();
 		Funcionario f = (Funcionario) session.get(Funcionario.class, id);

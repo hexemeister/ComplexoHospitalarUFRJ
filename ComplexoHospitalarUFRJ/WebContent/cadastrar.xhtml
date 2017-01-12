@@ -19,8 +19,11 @@
 					<h:outputText value="NOME: " />
 					<p:inputText value="#{fbean.f.nome}" />
 					
-					<h:outputText value="SALÁRIO: " />
-					<p:inputText value="#{fbean.f.salario}" />
+					<h:outputText value="CPF: " />
+					<p:inputText value="#{fbean.f.cpf}" />
+					
+					<h:outputText value="PIS: " />
+					<p:inputText value="#{fbean.f.pis}" />
 				</p:panelGrid>
 				<p:commandButton value="CADASTRAR" update="form1" 
 					action="#{fbean.cadastrar}" />
@@ -32,8 +35,11 @@
 				<p:column headerText="NOME">
 					<h:outputText value="#{func.nome}" />
 				</p:column>
-				<p:column headerText="SALÁRIO">
-					<h:outputText value="#{func.salario}" />
+				<p:column headerText="CPF">
+					<h:outputText value="#{func.cpf}" />
+				</p:column>
+				<p:column headerText="PIS">
+					<h:outputText value="#{func.pis}" />
 				</p:column>
 				<p:column headerText="EXCLUIR">
 					<p:commandButton value="EXCLUIR" action="#{fbean.excluir}"
