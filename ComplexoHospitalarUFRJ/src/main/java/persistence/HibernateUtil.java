@@ -1,32 +1,26 @@
 package persistence;
 
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
-import org.hibernate.service.ServiceRegistryBuilder;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 public class HibernateUtil {
 
 	private static SessionFactory sessionFactory = buildSessionFactory();
 
 	private static SessionFactory buildSessionFactory() {
+		final StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
 		try {
-			if (sessionFactory == null) {
-				Configuration configuration = new Configuration()
-						.configure(HibernateUtil.class
-								.getResource("/config/hibernate.cfg.xml"));
-				ServiceRegistryBuilder serviceRegistryBuilder = new ServiceRegistryBuilder();
-				serviceRegistryBuilder.applySettings(configuration
-						.getProperties());
-				ServiceRegistry serviceRegistry = serviceRegistryBuilder.buildServiceRegistry();
-				sessionFactory = configuration
-						.buildSessionFactory(serviceRegistry);
-			}
+			sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+
 			return sessionFactory;
+
 		} catch (Throwable ex) {
-			System.err.println("Initial SessionFactory creation failed." + ex);
+			ex.printStackTrace();
+			StandardServiceRegistryBuilder.destroy( registry );
 			throw new ExceptionInInitializerError(ex);
-		} 
+		}
 	}
 
 	public static SessionFactory getSessionFactory() {
@@ -37,4 +31,3 @@ public class HibernateUtil {
 		getSessionFactory().close();
 	}
 }
-
