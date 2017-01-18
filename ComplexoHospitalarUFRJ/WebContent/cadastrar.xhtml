@@ -16,14 +16,14 @@
 			
 			<p:fieldset legend="CADASTRAR FUNCIONARIO">
 				<p:panelGrid columns="2">
-					<h:outputText value="NOME: " />
-					<p:inputText value="#{fbean.f.nome}" />
+					<p:outputLabel value="NOME: " for="inputNome" />
+					<p:inputText value="#{fbean.f.nome}" id="inputNome"/>
 					
-					<h:outputText value="CPF: " />
-					<p:inputText value="#{fbean.f.cpf}" />
+					<p:outputLabel value="CPF: " for="inputCpf" />
+					<p:inputText value="#{fbean.f.cpf}" id="inputCpf" />
 					
-					<h:outputText value="PIS: " />
-					<p:inputText value="#{fbean.f.pis}" />
+					<p:outputLabel value="PIS: " for="inputPis" />
+					<p:inputText value="#{fbean.f.pis}" id="inputPis" />
 				</p:panelGrid>
 				<p:commandButton value="CADASTRAR" update="form1" 
 					action="#{fbean.cadastrar}" />
@@ -31,7 +31,7 @@
 			
 			<p:separator></p:separator>
 			
-			<p:dataTable value="#{fbean.lista}" var="func">
+			<p:dataTable value="#{fbean.lista}" var="func" id="tabela">
 				<p:column headerText="NOME">
 					<h:outputText value="#{func.nome}" />
 				</p:column>
@@ -43,13 +43,13 @@
 				</p:column>
 				<p:column headerText="EXCLUIR">
 					<p:commandButton value="EXCLUIR" action="#{fbean.excluir}"
-					update=":form1">
-						<f:setPropertyActionListener value="#{func}" target="#{fbean.f2}" />
+					update=":form1:tabela" process="@this" id="btnExcluir">
+						<f:setPropertyActionListener value="#{func}" target="#{fbean.f2}" for="btnExcluir"/>
 					</p:commandButton>
 				</p:column>
 				<p:column headerText="EDITAR">
 					<p:commandButton value="EDITAR" action="#{fbean.detalhes}"
-					ajax="false">
+					update=":form1:tabela" process="@this" id="btnDetalhes">
 						<f:setPropertyActionListener value="#{func}" target="#{fbean.f2}" />
 					</p:commandButton>
 				</p:column>

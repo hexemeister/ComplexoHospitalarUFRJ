@@ -1,4 +1,4 @@
-package manager;
+package br.ufrj.extraquadro.manager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,8 +8,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
-import persistence.FuncionarioDao;
-import model.Funcionario;
+import br.ufrj.extraquadro.model.Funcionario;
+import br.ufrj.extraquadro.persistence.FuncionarioDao;
 
 @ManagedBean(name="fbean")
 @RequestScoped

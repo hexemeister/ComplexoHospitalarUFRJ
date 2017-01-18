@@ -1,14 +1,14 @@
-package persistence;
+package br.ufrj.extraquadro.persistence;
 
 import java.util.List;
-
-import model.Funcionario;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
+
+import br.ufrj.extraquadro.model.Funcionario;
 
 // TODO: Auto-generated Javadoc
 /**

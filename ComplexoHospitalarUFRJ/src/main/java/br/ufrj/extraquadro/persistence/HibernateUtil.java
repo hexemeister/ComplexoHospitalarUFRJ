@@ -1,4 +1,4 @@
-package persistence;
+package br.ufrj.extraquadro.persistence;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;

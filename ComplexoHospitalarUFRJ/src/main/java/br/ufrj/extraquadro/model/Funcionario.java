@@ -6,13 +6,15 @@
  * Created on 12/01/2017
  *
  */
-package model;
+package br.ufrj.extraquadro.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.hibernate.validator.constraints.br.CPF;
 
 /**
  * Classe de modelo para Funcionarios Extraquadro.
@@ -34,6 +36,7 @@ public class Funcionario {
 	
 	/** CPF de um Funcionário Extraquadro. */
 	@Column
+	@CPF
 	private String cpf;
 	
 	/** PIS de um Funcionário Extraquadro. */

@@ -12,7 +12,7 @@
 	<property name="hibernate.format_sql">true</property>
 	<property name="hibernate.hbm2ddl.auto">update</property>
 	
-	<mapping class="model.Funcionario"/>
+	<mapping class="br.ufrj.extraquadro.model.Funcionario"/>
 	
  </session-factory>
 </hibernate-configuration>

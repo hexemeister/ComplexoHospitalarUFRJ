@@ -5,4 +5,4 @@
  * @author Renato
  *
  */
-package persistence;
+package br.ufrj.extraquadro.persistence;
