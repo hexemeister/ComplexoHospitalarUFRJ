@@ -14,7 +14,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CPF;
+
+import br.com.caelum.stella.bean.validation.NIT;
 
 /**
  * Classe de modelo para Funcionarios Extraquadro.
@@ -32,6 +35,7 @@ public class Funcionario {
 	
 	/** Nome completo de um funcionário extraquadro. */
 	@Column
+	@NotBlank
 	private String nome; 
 	
 	/** CPF de um Funcionário Extraquadro. */
@@ -41,6 +45,7 @@ public class Funcionario {
 	
 	/** PIS de um Funcionário Extraquadro. */
 	@Column
+	@NIT
 	private String pis; 
 	
 	/**
