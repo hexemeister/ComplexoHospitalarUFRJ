@@ -17,7 +17,7 @@
 			<p:fieldset legend="CADASTRAR FUNCIONARIO">
 				<p:panelGrid columns="2">
 					<p:outputLabel value="NOME: " for="inputNome" />
-					<p:inputText value="#{fbean.f.nome}" id="inputNome"/>
+					<p:inputText value="#{fbean.f.nome}" id="inputNome" />
 					
 					<p:outputLabel value="CPF: " for="inputCpf" />
 					<p:inputText value="#{fbean.f.cpf}" id="inputCpf" />
@@ -26,7 +26,7 @@
 					<p:inputText value="#{fbean.f.pis}" id="inputPis" />
 				</p:panelGrid>
 				<p:commandButton value="CADASTRAR" update="form1" 
-					action="#{fbean.cadastrar}" />
+					action="#{fbean.cadastrar}" validateClient="true" />
 			</p:fieldset>		
 			
 			<p:separator></p:separator>
