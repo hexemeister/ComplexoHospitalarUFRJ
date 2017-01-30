@@ -3,15 +3,17 @@ package br.ufrj.extraquadro.manager;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 
 import br.ufrj.extraquadro.model.Funcionario;
 import br.ufrj.extraquadro.persistence.FuncionarioDao;
 
-@ManagedBean(name="fbean")
+//@ManagedBean(name="fbean")
+//@RequestScoped
+@Named("fbean")
 @RequestScoped
 public class FuncionarioBean {
 

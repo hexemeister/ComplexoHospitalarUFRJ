@@ -37,12 +37,15 @@ dependencies {
 	compile group: 'org.hibernate', name: 'hibernate-validator-cdi', version: '5.3.4.Final'
 	compile group: 'br.com.caelum.stella', name: 'caelum-stella-core', version: '2.1.2'
 	compile group: 'br.com.caelum.stella', name: 'caelum-stella-bean-validation', version: '2.1.2'
+
+	compile group: 'org.jboss.weld.servlet', name: 'weld-servlet', version: '2.4.1.Final'
 	
 	compile group: 'javax.el', name: 'javax.el-api', version: '2.2.4'
 	compile group: 'org.glassfish.web', name: 'javax.el', version: '2.2.4'
     compile group: 'org.primefaces', name: 'primefaces', version: '6.0'
     compile group: 'org.glassfish', name: 'javax.faces', version: '2.0.11'
     compile group: 'javax.servlet', name: 'jstl', version: '1.2'
+    
     compile group: 'postgresql', name: 'postgresql', version: '9.4.1208-jdbc42-atlassian-hosted'
     
     
@@ -64,4 +67,17 @@ eclipse {
             facet name: "wst.jsdt.web", version: "1.0"  // JavaScript
         }
     }
+}
+
+sourceSets.main.resources {
+   exclude 'META-INF/beans.xml'
+}
+  classes {
+   inputs.dir 'src/main/resources/META-INF/beans.xml'
+   outputs.dir "$buildDir/classes/main/META-INF/beans.xml"
+} << {
+   copy {
+      from('src/main/resources') { include 'META-INF/beans.xml' }
+      into "$buildDir/classes/main/"
+   }
 }
