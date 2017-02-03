@@ -3,7 +3,6 @@ package br.ufrj.extraquadro.persistence;
 import java.util.List;
 
 import org.hibernate.Criteria;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
@@ -25,16 +24,13 @@ public class FuncionarioDao {
 	/** The transaction. */
 	Transaction transaction;
 	
-	/** The query. */
-	Query query;
-	
 	/**
 	 * Cadastrar.
 	 *
 	 * @param f the f
 	 * @throws Exception the exception
 	 */
-	public void cadastrar(Funcionario f)throws Exception{
+	public void cadastrar(Funcionario f) throws Exception{
 		session = HibernateUtil.getSessionFactory().openSession();
 		transaction = session.beginTransaction();
 		session.save(f);
@@ -48,7 +44,7 @@ public class FuncionarioDao {
 	 * @param f the f
 	 * @throws Exception the exception
 	 */
-	public void update(Funcionario f)throws Exception{
+	public void update(Funcionario f) throws Exception{
 		session = HibernateUtil.getSessionFactory().openSession();
 		transaction = session.beginTransaction();
 		session.update(f);
