@@ -1,7 +1,6 @@
 package br.ufrj.extraquadro.persistence;
 
 import java.io.Serializable;
-import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -11,10 +10,9 @@ public abstract class GenericDAO<T extends BaseEntity, ID extends Serializable> 
 	private Class<T> persistentClass;
 	private EntityManager em;
 
-	public GenericDAO() {
+	public GenericDAO(Class<T> persistentClass) {
 		super();
-		ParameterizedType parameterizedType = (ParameterizedType) getClass().getGenericSuperclass();
-		this.persistentClass = (Class<T>) parameterizedType.getActualTypeArguments()[0];
+		this.persistentClass = persistentClass;
 		em = HibernateUtil.getEntityManager();
 	}
 	
