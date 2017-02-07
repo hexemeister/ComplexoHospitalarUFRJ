@@ -16,13 +16,15 @@ import br.ufrj.extraquadro.model.Funcionario;
 public class FuncionarioDao {
 
 	/** The session. */
-	Session session;
+	Session session = HibernateUtil.getEntityManager().unwrap(Session.class);
 	
 	/** The criteria. */
 	Criteria criteria;
 	
 	/** The transaction. */
 	Transaction transaction;
+	
+	
 	
 	/**
 	 * Cadastrar.
@@ -31,7 +33,6 @@ public class FuncionarioDao {
 	 * @throws Exception the exception
 	 */
 	public void cadastrar(Funcionario f) throws Exception{
-		session = HibernateUtil.getSessionFactory().openSession();
 		transaction = session.beginTransaction();
 		session.save(f);
 		transaction.commit();
@@ -45,7 +46,6 @@ public class FuncionarioDao {
 	 * @throws Exception the exception
 	 */
 	public void update(Funcionario f) throws Exception{
-		session = HibernateUtil.getSessionFactory().openSession();
 		transaction = session.beginTransaction();
 		session.update(f);
 		transaction.commit();
@@ -59,7 +59,6 @@ public class FuncionarioDao {
 	 * @throws Exception the exception
 	 */
 	public void delete(Funcionario f)throws Exception{
-		session = HibernateUtil.getSessionFactory().openSession();
 		transaction = session.beginTransaction();
 		session.delete(f);
 		transaction.commit();
@@ -73,7 +72,6 @@ public class FuncionarioDao {
 	 * @throws Exception the exception
 	 */
 	public List<Funcionario> listar()throws Exception{
-		session = HibernateUtil.getSessionFactory().openSession();
 		criteria = session.createCriteria(Funcionario.class);
 		criteria.addOrder(Order.asc("nome"));
 		List<Funcionario> lista = criteria.list();
@@ -89,7 +87,6 @@ public class FuncionarioDao {
 	 * @throws Exception the exception
 	 */
 	public Funcionario buscarId(Integer id)throws Exception{
-		session = HibernateUtil.getSessionFactory().openSession();
 		Funcionario f = (Funcionario) session.get(Funcionario.class, id);
 		session.close();
 		return f;
