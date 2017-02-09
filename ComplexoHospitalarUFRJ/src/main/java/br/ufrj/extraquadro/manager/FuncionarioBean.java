@@ -11,8 +11,6 @@ import javax.inject.Named;
 import br.ufrj.extraquadro.model.Funcionario;
 import br.ufrj.extraquadro.persistence.FuncionarioDao;
 
-//@ManagedBean(name="fbean")
-//@RequestScoped
 @Named("fbean")
 @RequestScoped
 public class FuncionarioBean {
@@ -107,7 +105,7 @@ public class FuncionarioBean {
 		
 		try{
 			new FuncionarioDao().update(f2);
-			fc.addMessage(null, new FacesMessage("Funcionario editad"));
+			fc.addMessage(null, new FacesMessage("Funcionario editado"));
 		}catch(Exception e){
 			e.printStackTrace();
 		}

@@ -1,6 +1,10 @@
 package br.ufrj.extraquadro.persistence;
 
+import java.io.Serializable;
 import java.util.List;
+
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -13,18 +17,19 @@ import br.ufrj.extraquadro.model.Funcionario;
 /**
  * DAO para manipular Funcionario na base de dados.
  */
-public class FuncionarioDao {
+public class FuncionarioDao implements Serializable {
 
+	@Inject
+	private EntityManager manager;
+	
 	/** The session. */
-	Session session = HibernateUtil.getEntityManager().unwrap(Session.class);
+	
 	
 	/** The criteria. */
 	Criteria criteria;
 	
 	/** The transaction. */
 	Transaction transaction;
-	
-	
 	
 	/**
 	 * Cadastrar.
@@ -33,6 +38,7 @@ public class FuncionarioDao {
 	 * @throws Exception the exception
 	 */
 	public void cadastrar(Funcionario f) throws Exception{
+		Session session = manager.unwrap(Session.class);
 		transaction = session.beginTransaction();
 		session.save(f);
 		transaction.commit();
@@ -46,6 +52,7 @@ public class FuncionarioDao {
 	 * @throws Exception the exception
 	 */
 	public void update(Funcionario f) throws Exception{
+		Session session = manager.unwrap(Session.class);
 		transaction = session.beginTransaction();
 		session.update(f);
 		transaction.commit();
@@ -59,6 +66,7 @@ public class FuncionarioDao {
 	 * @throws Exception the exception
 	 */
 	public void delete(Funcionario f)throws Exception{
+		Session session = manager.unwrap(Session.class);
 		transaction = session.beginTransaction();
 		session.delete(f);
 		transaction.commit();
@@ -72,10 +80,13 @@ public class FuncionarioDao {
 	 * @throws Exception the exception
 	 */
 	public List<Funcionario> listar()throws Exception{
+		System.out.println("++++ "+manager.toString());
+		Session session = manager.unwrap(Session.class);
 		criteria = session.createCriteria(Funcionario.class);
 		criteria.addOrder(Order.asc("nome"));
 		List<Funcionario> lista = criteria.list();
 		session.close();
+	
 		return lista;
 	}
 	
@@ -87,6 +98,7 @@ public class FuncionarioDao {
 	 * @throws Exception the exception
 	 */
 	public Funcionario buscarId(Integer id)throws Exception{
+		Session session = manager.unwrap(Session.class);
 		Funcionario f = (Funcionario) session.get(Funcionario.class, id);
 		session.close();
 		return f;
