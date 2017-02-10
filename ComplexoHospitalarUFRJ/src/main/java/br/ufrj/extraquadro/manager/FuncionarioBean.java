@@ -6,6 +6,7 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.ufrj.extraquadro.model.Funcionario;
@@ -15,6 +16,9 @@ import br.ufrj.extraquadro.persistence.FuncionarioDao;
 @RequestScoped
 public class FuncionarioBean {
 
+	@Inject
+	private FuncionarioDao dao;
+	
 	private Funcionario f;
 	private List<Funcionario> lista;
 	private Funcionario f2;
@@ -37,8 +41,9 @@ public class FuncionarioBean {
 
 
 	public List<Funcionario> getLista() {
+		
 		try{
-			lista = new FuncionarioDao().listar();
+			lista = dao.listar();
 		}catch(Exception e){
 			e.printStackTrace();
 		}

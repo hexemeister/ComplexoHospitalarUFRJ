@@ -59,9 +59,12 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 eclipse {
+	jdt {
+        	javaRuntimeName = "JavaSE-1.8"
+    	}
     wtp {
         facet {
-            facet name: "java", version: "1.7"          // Java version
+            facet name: "java", version: "1.8"          // Java version
             facet name: "jst.web", version: "3.0"       // Dynamic Web Application
             facet name: "jst.jsf", version: "2.2"       // Java Server Faces
             facet name: "wst.jsdt.web", version: "1.0"  // JavaScript
