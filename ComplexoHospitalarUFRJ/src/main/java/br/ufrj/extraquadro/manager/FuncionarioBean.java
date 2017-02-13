@@ -66,7 +66,7 @@ public class FuncionarioBean {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		
 		try{
-			new FuncionarioDao().cadastrar(f);
+			dao.cadastrar(f);
 			fc.addMessage(null, new FacesMessage("Funcionario cadastrado com sucesso!"));
 			//limpar o formulario
 			f = new Funcionario();
