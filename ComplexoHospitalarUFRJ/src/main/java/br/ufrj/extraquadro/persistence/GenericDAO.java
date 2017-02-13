@@ -12,7 +12,6 @@ public abstract class GenericDAO<T extends BaseEntity, ID extends Serializable> 
 	private EntityManager em;
 
 	public GenericDAO() {
-		super();
 		ParameterizedType parameterizedType = (ParameterizedType) getClass().getGenericSuperclass();
 		this.persistentClass = (Class<T>) parameterizedType.getActualTypeArguments()[0];
 		em = HibernateUtil.getEntityManager();
